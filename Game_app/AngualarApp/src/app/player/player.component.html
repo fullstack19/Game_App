@@ -1,0 +1,111 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                            <form #playerForm= "ngForm" (ngSubmit)="onSubmit(playerForm)">
+                                    <input type="hidden" name="_id"  #_id="ngModel" [(ngModel)]="playerService.selectedPlayer._id">                                    
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="text"  placeholder="player" name="player" #name="ngModel" [(ngModel)]="playerService.selectedPlayer.player" placeholder="e.g Sam" required >
+                                    <label for="player">Player:
+                                        <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                    <div class="input-field col s6">
+                                        <select > 
+                                            <option [(ngModel)]="rankArray" *ngFor="let rankArray of rankArray">{{rankArray}} </option>
+                                        </select>
+                                        <label for="rank">Rank: </label>
+                                       
+                                    </div>
+                            </div>
+                            
+                            <div class="row">
+                                    <div class="input-field col s6">
+                                        <input type="text"  placeholder="score" name="score" #name="ngModel" [(ngModel)]="playerService.selectedPlayer.score" placeholder=" e.g 30000" required>
+                                        <label for="score">Score: </label>
+                                       
+                                    </div>
+                            </div>
+
+                            <div class="row">
+                                    <div class="input-field col s6">
+                                        <input type="text"  placeholder="time" name="time" #name="ngModel" [(ngModel)]="playerService.selectedPlayer.time" placeholder=" e.g 2d 3hr" required>
+                                        <label for="time">Time:
+                                        </label>
+                                    </div>
+                            </div>
+
+                            <div class="row">
+                                    <div class="input-field col s6">
+                                        <input type="text"  placeholder="favourite_game" name="favourite_game" #name="ngModel" [(ngModel)]="playerService.selectedPlayer.favourite_game" placeholder="e.g GTA" required>
+                                        <label for="favourite_game">Fav Game: </label>
+                                       
+                                    </div>
+                            </div>
+
+                            <div class="row">
+                                    <div class="input-field col s6">
+                                        <input type="text"  placeholder="status" name="status" #name="ngModel" [(ngModel)]="playerService.selectedPlayer.status" placeholder="e.g Available" required>
+                                        <label for="status">Status: </label>
+                                       
+                                    </div>
+                            </div>
+                            
+                                  <div class="row">
+                                        <div class="input-field col s6">
+                                          <button class="btn btn-custom right" type="button" (click)="resetForm(playerForm)">Cancel</button>
+                                          <button class="btn btn-custom right" type="submit" [disabled]="!playerForm.valid">Add</button>
+                                        </div>
+                                  </div>
+                            
+                    </form>
+           
+
+                    </div>
+                    <div class="col s7">
+                            <table>
+                                    <thead>
+                                         <tr>
+                                              <th>Player</th>
+                                              <th>Rank</th>
+                                              <th>Score</th>
+                                              <th>Time</th>
+                                              <th>Favourite Game</th>
+                                              <th>Status</th>
+                                        </tr>
+                                    </thead>
+                            
+                                    <tbody>
+                                        <tr *ngFor="let pl of playerService.players"> <!-- for all players in players collection-->
+                                            <td>{{pl.player}}</td>
+                                            <td>{{pl.rank}}</td>
+                                            <td>{{pl.score}}</td>
+                                            <td>{{pl.time}}</td>
+                                            <td>{{pl.favourite_game}}</td>
+                                            <td>{{pl.status}}</td>
+                                            
+                                            <td>
+                                                    <a class="action-btn" (click)="onEdit(pl)"><!--onEdit() is found in ts file-->
+                                                      <i class="material-icons">edit</i>
+                                                    </a>
+                                                    <a class="action-btn" (click)="onDelete(pl._id,playerForm)"><!--onDelete() is found in ts file-->
+                                                      <i class="material-icons">delete</i>
+                                                    </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                  </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
