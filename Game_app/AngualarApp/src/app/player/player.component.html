@@ -18,7 +18,9 @@
                             <div class="row">
                                     <div class="input-field col s6">
                                         <select > 
-                                            <option [(ngModel)]="rankArray" *ngFor="let rankArray of rankArray">{{rankArray}} </option>
+                                            <option [value]="ranks" *ngFor="let ranks of rankArray">
+                                                {{ranks}} 
+                                            </option>
                                         </select>
                                         <label for="rank">Rank: </label>
                                        
@@ -69,6 +71,7 @@
 
                     </div>
                     <div class="col s7">
+                            <h3>Player Details</h3>
                             <table>
                                     <thead>
                                          <tr>
@@ -98,6 +101,7 @@
                                                       <i class="material-icons">delete</i>
                                                     </a>
                                             </td>
+                                            <td></td>
                                         </tr>
                                     </tbody>
                                   </table>

@@ -31,7 +31,7 @@ export class PlayerService {
   putPlayer(pl: Player){
     return this.http.put(this.baseURL + `/${pl._id}`,pl);
   }
-  deletePlayer(id:String){
-    return this.http.delete(this.baseURL + `${id}`);
+  deletePlayer(_id:String){
+    return this.http.delete(this.baseURL + `/${_id}`);
   }
 }

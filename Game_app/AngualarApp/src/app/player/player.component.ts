@@ -70,6 +70,7 @@ export class PlayerComponent implements OnInit {
 
   onDelete(_id:String, form:NgForm){
     if(confirm('Are u sure you want to delete? ')== true){
+      console.log("Delete for real!!")
           this.playerService.deletePlayer(_id).subscribe((re)=>{
             this.refreshPlayerList();
             this.resetForm();
